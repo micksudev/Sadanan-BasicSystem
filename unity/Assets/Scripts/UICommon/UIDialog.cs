@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Basic.Common
+namespace Basic.UICommon
 {
-    public class BaseDialog : MonoBehaviour
+    public class UIDialog : MonoBehaviour
     {
         #region Callback
         public event Action OnClose;
@@ -14,14 +14,9 @@ namespace Basic.Common
         #endregion
 
         #region Inspector
-        [SerializeField]
-        protected GameObject goRoot;
-
-        [SerializeField]
-        protected Animator animator = default;
-
-        [SerializeField]
-        protected bool hideOnStart;
+        [SerializeField] protected GameObject goRoot;
+        [SerializeField] protected Animator animator = default;
+        [SerializeField] protected bool hideOnStart;
         #endregion
 
         #region Runtime

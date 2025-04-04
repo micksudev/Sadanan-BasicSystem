@@ -1,9 +1,8 @@
-using Basic.Common;
-using UnityEngine;
+using Basic.UICommon;
 
 namespace Basic.Scenes.Login.UI
 {
-    public class UISignUp : BaseDialog
+    public class UISignUp : UIDialog
     {
        
     }

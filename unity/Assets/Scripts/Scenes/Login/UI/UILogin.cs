@@ -1,10 +1,10 @@
 using System;
-using Basic.Common;
+using Basic.UICommon;
 using UnityEngine;
 
 namespace Basic.Scenes.Login.UI
 {
-    public class UILogin : BaseDialog
+    public class UILogin : UIDialog
     {
         public Action OnBtnSignUp;
         public Action OnBtnLogin;
