@@ -9,12 +9,13 @@ namespace Basic.Scenes.Login.UI
     {
         #region Callback
         public Action<string,string> OnBtnConfirmInput;
+        public Action<string,Action> OnOpenPrompt;
         #endregion
 
         #region Inspector
         [SerializeField] private UIButton btnConfirmInput;
 
-        [SerializeField] private TMP_InputField txtUsername;
+        [SerializeField] protected TMP_InputField txtUsername;
         [SerializeField] protected TMP_InputField txtPassword;
         #endregion
         
@@ -39,8 +40,11 @@ namespace Basic.Scenes.Login.UI
         #region Internal
         protected virtual void OnBtnConfirm()
         {
-            if(txtUsername.text == string.Empty || txtPassword.text == string.Empty) 
+            if(txtUsername.text == string.Empty || txtPassword.text == string.Empty)
+            {
+                OnOpenPrompt?.Invoke("Please input username and password", null);
                 return;
+            }
             
             OnBtnConfirmInput?.Invoke(txtUsername.text,txtPassword.text);
         }

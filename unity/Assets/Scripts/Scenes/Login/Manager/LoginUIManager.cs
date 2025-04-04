@@ -37,12 +37,14 @@ namespace Basic.Scenes.Login.Manager
         {
             uiLogin.OnBtnSignUp = CloseLoginAndOpenSignUp;
             uiLogin.OnBtnConfirmInput = OnLogin;
+            uiLogin.OnOpenPrompt = OpenPrompt;
             uiLogin.Init();
         }
 
         private void UISignUpInit()
         {
             uiSignUp.OnBtnConfirmInput = OnSignUp;
+            uiSignUp.OnOpenPrompt = OpenPrompt;
             uiSignUp.Init();
         }
         #endregion
@@ -72,13 +74,6 @@ namespace Basic.Scenes.Login.Manager
         {
             uiPrompt.Open(message, onClosed);
         }
-
-        public void OpenPrompt(string message, Action onClosed = null,
-            string btn1Label = null, Action onPressedBtn1 = null,
-            string btn2Label = null, Action onPressedBtn2 = null)
-        {
-            uiPrompt.Open(message, onClosed, btn1Label, onPressedBtn1, btn2Label, onPressedBtn2);
-        }
         #endregion
 
         #region Access Loading
@@ -86,7 +81,6 @@ namespace Basic.Scenes.Login.Manager
         {
             uiAccessLoading.SetMessage(message);
         }
-        
         public void CloseAccessLoading(Action onClosed = null)
         {
             if(onClosed != null)
