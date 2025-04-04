@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goRoot: {fileID: 6891080819669914392}
   animator: {fileID: 4070333556893341380}
-  hideOnStart: 1
+  hideOnStart: 0
 --- !u!95 &4070333556893341380
 Animator:
   serializedVersion: 5
@@ -632,6 +632,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 683268458205735504}
     m_Modifications:
+    - target: {fileID: 2427727430585834349, guid: 36a3c266e6c5c9d4da5d73f41552295b, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427727430585834349, guid: 36a3c266e6c5c9d4da5d73f41552295b, type: 3}
+      propertyPath: m_ContentType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4143770111121496578, guid: 36a3c266e6c5c9d4da5d73f41552295b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
