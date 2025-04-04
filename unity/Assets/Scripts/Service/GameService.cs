@@ -22,7 +22,7 @@ namespace Basic.Service
             }
         }
         
-        private const string SERVICE_URL = "http://localhost/restful/";
+        private const string SERVICE_URL = "https://test-piggy.codedefeat.com/worktest/dev13/api/";
     
         public void Register(string username, string password, Action<string> onRequestComplete, Action<string> onRequestError)
         {
