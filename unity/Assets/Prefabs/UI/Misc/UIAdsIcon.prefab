@@ -45,6 +45,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2538435757074876760}
+  - component: {fileID: 3710190373970603275}
   m_Layer: 5
   m_Name: UIAdsIcon
   m_TagString: Untagged
@@ -72,6 +73,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3710190373970603275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562846708233549166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa20747e430211f478a70d13b5d54775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 20
 --- !u!1 &2808075276624725346
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +350,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6308770331984143485}
+  m_TargetGraphic: {fileID: 5746831783753660353}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

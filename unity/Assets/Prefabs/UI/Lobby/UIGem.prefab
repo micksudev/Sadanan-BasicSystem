@@ -172,7 +172,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2130813117340054088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 620087772136534974}
+        m_TargetAssemblyTypeName: Basic.Scenes.Lobby.UI.UIGem, Basic.Scenes.Lobby.UI
+        m_MethodName: BtnAddDiamond
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5273843882784640102
 GameObject:
   m_ObjectHideFlags: 0

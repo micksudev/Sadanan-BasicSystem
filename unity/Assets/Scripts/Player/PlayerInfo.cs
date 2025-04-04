@@ -32,6 +32,8 @@ namespace Basic.Player
         public int PlayerId => playerId;
         public string Token => token;
         public PlayerData PlayerData => playerData;
+        
+        public bool IsLogin => playerId != 0;
 
         public void SetInfo(JObject json,string token)
         {
@@ -47,8 +49,13 @@ namespace Basic.Player
         {
             if(json["diamond"] == null || json["heart"] == null)
                 return;
-            
-            playerData = new PlayerData(json["diamond"].ToString(), json["heart"].ToString());
+            if(playerData == null)
+                playerData = new PlayerData(json["diamond"].ToString(), json["heart"].ToString());
+            else
+            {
+                playerData.SetDiamond(json["diamond"].ToString());
+                playerData.SetHeart(json["heart"].ToString());
+            }
         }
     }
 }

@@ -47,6 +47,19 @@ namespace Basic.Service
             ServiceManager.SendPostUnityWebRequest(this,SERVICE_URL + serviceName,
                 form,onRequestComplete, onRequestError);
         }
+        
+        public void AddDiamond(int userId, int amount, string token, Action<string> onRequestComplete, Action<string> onRequestError)
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("user_id", userId);
+            form.AddField("amount", amount);
+            form.AddField("token", token);
+        
+            string serviceName = "items/diamond/add";
+        
+            ServiceManager.SendPostUnityWebRequest(this,SERVICE_URL + serviceName,
+                form,onRequestComplete, onRequestError);
+        }
     
     }
 }
