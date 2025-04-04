@@ -10,16 +10,11 @@ namespace Basic.UICommon
         [SerializeField] private TextMeshProUGUI txtTitle; 
         [SerializeField] private TextMeshProUGUI txtMessage;
 
-        [SerializeField] private GameObject goBtn1;
+        [SerializeField] private UIButton uiBtn1;
         [SerializeField] private TextMeshProUGUI txtBtn1;
 
-        [SerializeField] private GameObject goBtn2;
+        [SerializeField] private UIButton uiBtn2;
         [SerializeField] private TextMeshProUGUI txtBtn2;
-        #endregion
-
-        #region Runtime Data
-        private Action onPressedBtn1;
-        private Action onPressedBtn2;
         #endregion
 
         #region Init
@@ -32,8 +27,17 @@ namespace Basic.UICommon
             
             txtMessage.SetText(message);
             
-            this.onPressedBtn1 = onPressedBtn1;
-            this.onPressedBtn2 = onPressedBtn2;
+            uiBtn1.OnBtnPress = () =>
+            {
+                Close();
+                onPressedBtn1?.Invoke();
+            };
+            
+            uiBtn2.OnBtnPress = () =>
+            {
+                Close();
+                onPressedBtn2?.Invoke();
+            };
             
             if(onClosed!=null)
                 OnClosed += onClosed;
@@ -44,22 +48,8 @@ namespace Basic.UICommon
             if (!string.IsNullOrEmpty(btn2Label))
                 txtBtn2.SetText(btn2Label);
 
-            goBtn2.SetActive(onPressedBtn2 != null);
+            uiBtn2.gameObject.SetActive(onPressedBtn2 != null);
             Open();
-        }
-        #endregion
-
-        #region UI
-        public void Btn1()
-        {
-            Close();
-            onPressedBtn1?.Invoke();
-        }
-
-        public void Btn2()
-        {
-            Close();
-            onPressedBtn2?.Invoke();
         }
         #endregion
     }

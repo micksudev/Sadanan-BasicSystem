@@ -25,9 +25,23 @@ namespace Basic.Scenes.Login.UI
         }
         #endregion
 
+        #region Interface
+
+        public override void Open()
+        {
+            base.Open();
+            txtUsername.text = string.Empty;
+            txtPassword.text = string.Empty;
+        }
+
+        #endregion
+
         #region Internal
         protected virtual void OnBtnConfirm()
         {
+            if(txtUsername.text == string.Empty || txtPassword.text == string.Empty) 
+                return;
+            
             OnBtnConfirmInput?.Invoke(txtUsername.text,txtPassword.text);
         }
         #endregion

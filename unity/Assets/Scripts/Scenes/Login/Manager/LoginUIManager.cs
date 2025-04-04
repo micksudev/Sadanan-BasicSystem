@@ -7,6 +7,11 @@ namespace Basic.Scenes.Login.Manager
 {
     public class LoginUIManager : MonoBehaviour
     {
+        #region Callback
+        public Action<string, string> OnLogin;
+        public Action<string, string> OnSignUp;
+        #endregion
+        
         #region Runtime
         private UILogin uiLogin;
         private UISignUp uiSignUp;
@@ -40,22 +45,19 @@ namespace Basic.Scenes.Login.Manager
 
         private void UISignUpInit()
         {
-            uiSignUp.OnBtnConfirmInput = (s, s1) =>
-            {
-                Debug.Log("UISignUpInit: " + s + " " + s1);
-            };
+            uiSignUp.OnBtnConfirmInput = OnSignUp;
             uiSignUp.Init();
         }
         #endregion
 
-        #region Internal
+        #region Close&Open
         private void CloseLoginAndOpenSignUp()
         {
             uiLogin.OnClosed += uiSignUp.Open;
             uiLogin.Close();
         }
         
-        private void CloseSignUpAndOpenLogin()
+        public void CloseSignUpAndOpenLogin()
         {
             uiSignUp.OnClosed += uiLogin.Open;
             uiSignUp.Close();

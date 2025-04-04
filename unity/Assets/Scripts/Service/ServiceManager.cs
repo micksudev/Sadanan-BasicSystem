@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Basic.Managers
+namespace Basic.Service
 {
     public static class ServiceManager
     {
