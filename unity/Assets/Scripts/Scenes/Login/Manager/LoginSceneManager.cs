@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Basic.Service;
+using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace Basic.Scenes.Login.Manager
@@ -36,12 +37,20 @@ namespace Basic.Scenes.Login.Manager
             ui.OpenAccessLoading("Registering...");
             await Task.Delay(1000);
             
-            gameService.Register(username,password,json =>
+            gameService.Register(username,password,jsonString =>
             {
-                DebugLog(json);
+                DebugLog(jsonString);
+                var json = JObject.Parse(jsonString);
+                string message = (string)json["message"];
+                int code = (int)json["code"];
+
                 ui.CloseAccessLoading(() =>
                 {
-                    ui.OpenPrompt("Register Success!",ui.CloseSignUpAndOpenLogin);
+                    ui.OpenPrompt(message,() =>
+                    {
+                        if (code == 200)
+                            ui.CloseSignUpAndOpenLogin();
+                    });
                 });
             }, OnServiceError);
             
