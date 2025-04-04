@@ -1,3 +1,4 @@
 {
-	"name": "Basic.Scenes.Login.Manager"
+	"name": "Basic.Scenes.Login.Manager",
+	"references":[ "GUID:5377b0c105f108b4eb4de8f390c48df6" ]
 }
