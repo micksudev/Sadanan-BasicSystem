@@ -1,24 +1,26 @@
 using System;
 using Basic.UICommon;
+using TMPro;
 using UnityEngine;
 
 namespace Basic.Scenes.Login.UI
 {
-    public class UILogin : UIDialog
+    public class UILogin : UIUserInput
     {
+        #region Callback
         public Action OnBtnSignUp;
-        public Action OnBtnLogin;
+        #endregion
 
-
-        public void BtnSignUp()
+        #region Inspector
+        [SerializeField] private UIButton btnSignUp;
+        #endregion
+        
+        #region Init
+        public override void Init()
         {
-            OnBtnSignUp?.Invoke();
+            base.Init();
+            btnSignUp.OnBtnPress += OnBtnSignUp;
         }
-
-        public void BtnLogin()
-        {
-            OnBtnLogin?.Invoke();
-        }
-
+        #endregion
     }
 }

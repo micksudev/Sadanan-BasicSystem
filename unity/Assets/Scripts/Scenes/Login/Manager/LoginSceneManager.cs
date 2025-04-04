@@ -17,10 +17,9 @@ namespace Basic.Scenes.Login.Manager
         private void Start()
         {
             ui = goDialogRoot.AddComponent<LoginUIManager>();
+            ui.Init();
         }
         #endregion
-        
-        
         
     }
 }

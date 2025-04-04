@@ -30,7 +30,6 @@ namespace Basic.UICommon
         #endregion
 
         #region Constant
-        private const string startAnimation = "Start"; 
         private const string inAnimation = "In";
         private const string outAnimation = "Out";
         #endregion

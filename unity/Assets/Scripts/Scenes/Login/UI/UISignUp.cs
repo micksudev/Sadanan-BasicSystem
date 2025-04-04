@@ -1,9 +1,20 @@
-using Basic.UICommon;
+using TMPro;
+using UnityEngine;
 
 namespace Basic.Scenes.Login.UI
 {
-    public class UISignUp : UIDialog
+    public class UISignUp : UIUserInput
     {
-       
+        #region Inspector
+        [SerializeField] private TMP_InputField txtConfirmPassword;
+        #endregion
+
+        #region Internal
+        protected override void OnBtnConfirm()
+        {
+            if(txtConfirmPassword.text == txtPassword.text)
+                base.OnBtnConfirm();
+        }
+        #endregion
     }
 }
