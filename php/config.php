@@ -2,10 +2,10 @@
 
 class Config
 {
-    private const DBHOST = "localhost";
-    private const DBUSER = "root";
-    private const DBPASS = "";
-    private const DBNAME = "restful";
+    private const DBHOST = "103.91.190.179";
+    private const DBUSER = "testdev13";
+    private const DBPASS = "dQbcVQIUYXp1lFGbSboDGYknabD78tdy";
+    private const DBNAME = "testdev13";
 
     private $dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME . "";
     protected $conn = null;
