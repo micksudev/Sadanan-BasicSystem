@@ -36,10 +36,7 @@ namespace Basic.Scenes.Login.Manager
         private void UILoginInit()
         {
             uiLogin.OnBtnSignUp = CloseLoginAndOpenSignUp;
-            uiLogin.OnBtnConfirmInput = (s, s1) =>
-            {
-                Debug.Log("UILoginInit: " + s + " " + s1);
-            };
+            uiLogin.OnBtnConfirmInput = OnLogin;
             uiLogin.Init();
         }
 

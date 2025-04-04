@@ -18,6 +18,18 @@ namespace Basic.Service
             ServiceManager.SendPostUnityWebRequest(this,SERVICE_URL + serviceName,
                 form,onRequestComplete, onRequestError);
         }
+        
+        public void Login(string username, string password, Action<string> onRequestComplete, Action<string> onRequestError)
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("username", username);
+            form.AddField("password", password);
+        
+            string serviceName = "users/login";
+        
+            ServiceManager.SendPostUnityWebRequest(this,SERVICE_URL + serviceName,
+                form,onRequestComplete, onRequestError);
+        }
     
     }
 }
