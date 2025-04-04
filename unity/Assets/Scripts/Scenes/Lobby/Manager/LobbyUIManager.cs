@@ -32,7 +32,13 @@ namespace Basic.Scenes.Lobby.Manager
 
             uiMainMenu.OnBtnStart = () =>
             {
-                OpenPrompt(" On Development ", () => { });
+                CloseMainMenu(() =>
+                {
+                    OpenPrompt(" On Development ", () =>
+                    {
+                        OpenMainMenu();
+                    });
+                });
             };
             uiMainMenu.Init();
         }
@@ -42,6 +48,20 @@ namespace Basic.Scenes.Lobby.Manager
         public void SetHeart(int heart) => uiHeart.SetSlider(heart);
         
         public void SetGem(string gem) => uiGem.SetGem(gem);
+
+        public void OpenMainMenu(Action onOpened = null)
+        {
+            if(onOpened != null)
+                uiMainMenu.OnOpened += onOpened;
+            uiMainMenu.Open();
+        }
+        
+        public void CloseMainMenu(Action onClosed = null)
+        {
+            if(onClosed != null)
+                uiMainMenu.OnClosed += onClosed;
+            uiMainMenu.Close();
+        }
         #endregion
         
         #region Prompt

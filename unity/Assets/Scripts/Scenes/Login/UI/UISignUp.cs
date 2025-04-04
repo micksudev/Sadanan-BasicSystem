@@ -15,6 +15,13 @@ namespace Basic.Scenes.Login.UI
             if(txtConfirmPassword.text == txtPassword.text)
                 base.OnBtnConfirm();
         }
+
+        public override void Open()
+        {
+            base.Open();
+            txtConfirmPassword.text = string.Empty;
+        }
+
         #endregion
     }
 }

@@ -26,7 +26,7 @@ namespace Basic.Scenes.Lobby.Manager
             playerInfo = PlayerInfo.Instance;
             
             ui = goDialogRoot.AddComponent<LobbyUIManager>();
-            ui.OnBtnAddDiamond = OnAddDiamond;
+            ui.OnBtnAddDiamond =()=> ui.CloseMainMenu(OnAddDiamond);
             ui.Init();
 
             LoadedComplete();
@@ -62,7 +62,7 @@ namespace Basic.Scenes.Lobby.Manager
         {
             if (!playerInfo.IsLogin)
             {
-                ui.OpenPrompt("Please login.");
+                ui.OpenPrompt("Please login.",() => ui.OpenMainMenu());
                 return;
             }
             
@@ -84,6 +84,8 @@ namespace Basic.Scenes.Lobby.Manager
                         {
                             playerInfo.SetData((JObject)json["user_data"]);
                         }
+                        
+                        ui.OpenMainMenu();
                     });
                 });
             }, OnServiceError);
@@ -92,7 +94,10 @@ namespace Basic.Scenes.Lobby.Manager
         private void OnServiceError(string error)
         {
             DebugLog("ServiceError: " + error, true);
-            ui.CloseAccessLoading();
+            ui.CloseAccessLoading(()=>
+            {
+                ui.OpenMainMenu();
+            });
         }
         #endregion
         
