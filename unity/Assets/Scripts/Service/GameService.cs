@@ -5,6 +5,23 @@ namespace Basic.Service
 {
     public class GameService : MonoBehaviour
     {
+        private static GameService _instance;
+        public static GameService Instance 
+        {
+            get
+            {
+                if(_instance != null)
+                    return _instance;
+            
+                GameObject gameService = new GameObject();
+                gameService.name = "GameService";
+                DontDestroyOnLoad(gameService);
+                
+                _instance = gameService.AddComponent<GameService>();
+                return _instance;
+            }
+        }
+        
         private const string SERVICE_URL = "http://localhost/restful/";
     
         public void Register(string username, string password, Action<string> onRequestComplete, Action<string> onRequestError)

@@ -59,6 +59,12 @@ namespace Basic.Scenes.Login.Manager
             uiSignUp.OnClosed += uiLogin.Open;
             uiSignUp.Close();
         }
+
+        public void CloseLogin(Action onClosed = null)
+        {
+            uiLogin.OnClosed += onClosed;
+            uiLogin.Close();
+        }
         #endregion
         
         #region Prompt

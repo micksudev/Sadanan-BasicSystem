@@ -4,6 +4,7 @@ using Basic.Player;
 using Basic.Service;
 using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Basic.Scenes.Login.Manager
 {
@@ -21,27 +22,13 @@ namespace Basic.Scenes.Login.Manager
         #region Init
         private void Start()
         {
-            gameService = gameObject.AddComponent<GameService>();
+            gameService = GameService.Instance;
             
             ui = goDialogRoot.AddComponent<LoginUIManager>();
             ui.OnSignUp = OnSignUp;
             ui.OnLogin = OnLogin;
             ui.Init();
             
-        }
-        #endregion
-
-        #region Player
-        private PlayerInfo NewPlayer()
-        {
-            if(PlayerInfo.Instance != null)
-                return PlayerInfo.Instance;
-            
-            GameObject player = new GameObject();
-            player.name = "PlayerData";
-            var playerInfo = player.AddComponent<PlayerInfo>();
-            DontDestroyOnLoad(player);
-            return playerInfo;
         }
         #endregion
 
@@ -89,10 +76,15 @@ namespace Basic.Scenes.Login.Manager
                         if (code != 200)
                             return;
                         
-                        var playerInfo = NewPlayer();
+                        var playerInfo = PlayerInfo.Instance;
                     
                         playerInfo.SetInfo((JObject)json["user"], (string)json["token"]);
                         playerInfo.SetData((JObject)json["user_data"]);
+                        
+                        ui.CloseLogin(() =>
+                        {
+                            SceneManager.LoadScene("s_Lobby");
+                        });
                     });
                 });
             }, OnServiceError);

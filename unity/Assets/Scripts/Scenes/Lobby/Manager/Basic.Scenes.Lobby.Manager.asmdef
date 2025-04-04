@@ -1,3 +1,4 @@
 {
-	"name": "Basic.Scenes.Lobby.Manager"
+	"name": "Basic.Scenes.Lobby.Manager",
+	"references":[ "GUID:e22fe9227aaec3341acf084ff70c85c2", "GUID:d8e4ff9256c068c42a7402a0b0393373", "GUID:e1e618a1ffc919645b8be2ecca40d409", "GUID:5862d8962056b6c4fb47f0fdd24e9080" ]
 }

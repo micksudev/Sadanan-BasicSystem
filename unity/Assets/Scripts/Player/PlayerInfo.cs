@@ -5,8 +5,23 @@ namespace Basic.Player
 {
     public class PlayerInfo : MonoBehaviour
     {
-        public static PlayerInfo Instance { get; private set; }
-        private void Awake() => Instance = this;
+        private static PlayerInfo _instance;
+
+        public static PlayerInfo Instance
+        {
+            get
+            {
+                if(_instance != null)
+                    return _instance;
+            
+                GameObject gameService = new GameObject();
+                gameService.name = "PlayerInfo";
+                DontDestroyOnLoad(gameService);
+                
+                _instance = gameService.AddComponent<PlayerInfo>();
+                return _instance;
+            }
+        }
         
         [SerializeField] private string username;
         [SerializeField] private int playerId;
