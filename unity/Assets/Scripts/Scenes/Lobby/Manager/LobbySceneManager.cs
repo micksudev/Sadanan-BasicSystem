@@ -1,4 +1,5 @@
-using System.Threading.Tasks;
+using System;
+using System.Collections;
 using Basic.Player;
 using Basic.Service;
 using Newtonsoft.Json.Linq;
@@ -66,30 +67,40 @@ namespace Basic.Scenes.Lobby.Manager
             }
             
             ui.OpenAccessLoading("Simulating Add 100 Diamond...");
-            await Task.Delay(1000);
-            
-            gameService.AddDiamond(playerInfo.PlayerId,100,playerInfo.Token,jsonString =>
-            {
-                DebugLog(jsonString);
-                var json = JObject.Parse(jsonString);
-                string message = (string)json["message"];
-                int code = (int)json["code"];
 
-                ui.CloseAccessLoading(() =>
+            WaitForSecondsRealtime(() =>
+            {
+                gameService.AddDiamond(playerInfo.PlayerId,100,playerInfo.Token,jsonString =>
                 {
-                    ui.OpenPrompt(message,() =>
+                    DebugLog(jsonString);
+                    var json = JObject.Parse(jsonString);
+                    string message = (string)json["message"];
+                    int code = (int)json["code"];
+
+                    ui.CloseAccessLoading(() =>
                     {
-                        if (code == 200)
+                        ui.OpenPrompt(message,() =>
                         {
-                            playerInfo.SetData((JObject)json["user_data"]);
-                        }
+                            if (code == 200)
+                            {
+                                playerInfo.SetData((JObject)json["user_data"]);
+                            }
                         
-                        ui.OpenMainMenu();
+                            ui.OpenMainMenu();
+                        });
                     });
-                });
-            }, OnServiceError);
+                }, OnServiceError);
+            });
         }
-        
+        private void WaitForSecondsRealtime(Action onComplete)
+        {
+            StartCoroutine(WaitForSecondsRealtime(1.5f, onComplete));
+        }
+        private IEnumerator WaitForSecondsRealtime(float seconds, Action onTimeout)
+        {
+            yield return new WaitForSeconds(seconds);
+            onTimeout.Invoke();
+        }
         private void OnServiceError(string error)
         {
             DebugLog("ServiceError: " + error, true);
