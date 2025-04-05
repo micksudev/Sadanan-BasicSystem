@@ -1,8 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using Basic.Player;
 using Basic.Service;
-using Unity.Plastic.Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace Basic.Scenes.Lobby.Manager
